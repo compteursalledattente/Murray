@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appel des Usagers</title>
+  <style>
+    body {
+      margin: 60px;
+      font-family: Arial, sans-serif;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 0px;
+    }
+    .grid-item {
+      padding: 10px;
+      color: black; /* Pour améliorer la lisibilité */
+    }
+      body.hidden {
+        visibility: hidden;
+    }
+    .case1 {
+      background-color: #ffffff;
+      grid-column: span 2; /* Fusionne deux colonnes */
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 130px;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+      grid-row: span 3;
+    }
+    
+    .case3 {
+      display: flex;
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 20px;
+      align-items: center;
+      justify-content: right;
+      grid-column: span 2;
+    }
+    .case11 {
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      font-size: 60px;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    select {
+      width: 200px;
+      height: 200px;
+      padding: 5px;
+      font-size: 150px;
+      border-radius: 10px; /* coins arrondis */
+      border: 6px solid black; /* bordure bleue */
+      font-family: Impact, Helvetica, sans-serif;
+      background-color: #f8f9fa; /* couleur de fond */
+      color: #333; /* couleur du texte */
+      text-align: center;
+    }
+
+    /* Icône personnalisée pour la flèche déroulante */
+    select::after {
+      content: '\25BC'; /* caractère Unicode pour la flèche vers le bas */
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none; /* ne pas permettre de cliquer sur la flèche */
+    }
+
+    /* Conteneur pour le positionnement de l'icône */
+    .case7 {
+      position: relative;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+      }
+      
+    .case13 {
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      grid-column: span 2;
+      font-size: 30px;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .button {
+      padding: 20px 40px;
+      font-family: Impact, Helvetica, sans-serif;
+      color: Black;
+      border: none; /* pas de bordure */
+      border-radius: 5px; /* coins arrondis */
+      cursor: pointer; /* curseur pointeur */
+      transition: background-color 0.3s;  
+    }
+    .button1 {
+      width: 600px; /* Largeur du bouton */
+      height: 80px; /* Hauteur du bouton */
+      background-color: #9ee577;
+      font-size: 30px;
+    }
+    .buttonLogOut {
+      width: 160px; /* Largeur du bouton */
+      height: 40px; /* Hauteur du bouton */
+      font-size: 20px;
+      display: flex;
+  	  justify-content: center; /* Centre horizontalement */
+  	  align-items: center; /* Centre verticalement */
+    }
+
+    /* Effet au survol */
+    .button:hover {
+      background-color: #0056b3; /* couleur de fond au survol */
+    }
+    .case17 {
+      font-size: 60px;
+      display: flex;
+    }
+    .case21 {
+      border-left: 10px solid black;
+      border-top: 10px solid black;
+      border-right: 10px solid black;
+      display: flex;
+      grid-column: span 2;
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 50px;
+      align-items: center;
+      justify-content: center;
+    }
+    .case23 {
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center; 
+      font-size: 50px;
+      display: flex;
+      grid-column: span 2;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .case25 {
+      border-left: 10px solid black;
+      border-bottom: 10px solid black;
+      border-right: 10px solid black;
+      background-color: #f7e4d8; /* orange pâle */
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      font-size: 250px;
+      border-bottom: 10px solid black;
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+.case27 {
+  display: flex;
+  font-family: Impact, Helvetica, sans-serif;
+  font-size: 30px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline;
+  text-align: center; /* Centrer le texte horizontalement */
+}
+    .case28 {
+      display: flex;
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 30px;
+      align-items: center;
+      justify-content: center;
+      text-decoration: underline;
+    }
+    .case29 {
+      
+      background-color: #ffffff;
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 40px;
+      text-align: left;
+    }
+    .case31 {
+		display: flex;
+    	justify-content: center;
+    	align-items: center; /* Centre verticalement */
+    	height: 100%;
+    }
+        .case32 {
+		display: flex;
+    	justify-content: center;
+    	align-items: center; /* Centre verticalement */
+    	height: 100%;
+          font-family: Impact, Helvetica, sans-serif;
+      font-size: 80px;
+      flex-direction: column;
+
+    }
+    .case33 {
+      background-color: #ffffff;
+      font-family: Copperplate, Papyrus, Fantasy;
+      font-size: 40px;
+      text-align: right;
+      grid-column: span 4; /* Fusionne deux colonnes */
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .case36 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 30px;
+      background-color: transparent; /* Réinitialiser l'arrière-plan du conteneur */
+    }
+
+    .highlight {
+      background-color: lightgray; /* Couleur du surligneur */
+      padding: 0 4px; /* Ajuster l'espacement autour du texte */
+    }
+    .button-container {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+  	}
+    .button-disabled {
+    background-color: red;
+    cursor: not-allowed;
+    opacity: 0.6;
+    }
+    
+    
+    .gauge-container {
+            width: 350px;
+            height: 175px;
+            position: relative;
+            margin: 50px auto;
+            overflow: hidden;
+            
+        }
+        .gauge-background1 {
+            width: 85%;
+            height: 170%;
+            border-radius: 50%;
+            background: #b9291e;
+            position: absolute;
+            top: 100%;
+            left:6%;
+            transform: translateY(-50%);
+			clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%);
+            border: 6px solid black;
+        }
+      .gauge-background2 {
+            width: 85%;
+            height: 170%;
+            border-radius: 100%;
+            background: yellow;
+            position: absolute;
+            top: 100%;
+            left:6%;
+            transform: translateY(-50%);
+			clip-path: polygon(50% 50%, 33.75% 0%, 50% 0%);
+            border: 6px solid black;
+        }
+        .gauge-background3 {
+            width: 85%;
+            height: 170%;
+            border-radius: 100%;
+            background: green;
+            position: absolute;
+            top: 100%;
+            left:6%;
+            transform: translateY(-50%);
+			clip-path: polygon(50% 50%, 0% 50%, 0% 0%, 33.75% 0%);
+            border: 6px solid black;
+        }
+        .gauge-needle {
+            width: 2%;
+            height: 90%;
+            background: red;
+            position: absolute;
+            bottom: 0%;
+            left: 48.5%;
+            transform-origin: bottom;
+            transform: rotate(-90deg);
+            transition: transform 0.5s ease-out;
+            border: 3px solid black;
+        }
+        .gauge-center {
+            width: 20px;
+            height: 20px;
+            background: black;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            top: 96%;
+        }
+        .gauge-number {
+        font-family: Impact, Helvetica, sans-serif;
+        position: absolute;
+        color: black;
+        font-weight: bold;
+        
+    }
+
+    /* Positionnement des chiffres */
+    .number-5 {
+        top: 77%;
+        left: 14%;
+        transform: translateX(-50%);
+        font-size: 150%;
+    }
+
+    .number-7 {
+        top: 13%;
+        left: 38%;
+        transform: translate(-50%, 50%);
+        font-size: 150%;
+    }
+
+    .number-75 {
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 150%;
+    }
+    .number-10 {
+        top: 77%;
+        left: 86%;
+        transform: translate(-50%, 0%);
+        font-size: 150%;
+    }
+    .pointrouge { 
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 60px;
+      color: red;
+    }
+    .pointbleu { 
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 60px;
+      color: blue;
+    }
+    .line1, .line2 {
+    display: flex;
+    align-items: center;
+	}
+    .personnel {
+  		color: red;
+    }
+
+    .equipe {
+      color: blue;
+    }
+    .nav-bar {
+  background-color: #333; /* Couleur de fond de la bande */
+  overflow: hidden;
+  padding: 1px;
+  display: flex;
+  justify-content: left; /* Centrer les liens horizontalement */
+}
+
+.nav-link {
+  font-family: Impact, Helvetica, sans-serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none; /* Supprimer la sous-ligne */
+  margin: 0 10px; /* Espacement entre les liens */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Effet de transition */
+}
+
+.nav-link:hover {
+  background-color: #575757; /* Couleur au survol */
+}
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f2f2f2;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            max-width: 4000px;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: normal;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .summary {
+            font-weight: bold;
+            color: #555;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .summary span {
+            color: #4CAF50;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            th, td {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .summary span {
+                font-size: 1em;
+            }
+        }
+
+        /* Nouveau style pour le sélecteur de date et le bouton */
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .controls input[type="date"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .controls button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .controls button:hover {
+            background-color: #45a049;
+        }
+        .user-container {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
+            display: grid;
+      		grid-template-columns: repeat(2, 1fr); 
+        }
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+        .user-list-section, .user-form-section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .user-list-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .user-list-section ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .user-list-section ul li:last-child {
+            border-bottom: none;
+        }
+        .user-list-section ul li button {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .user-form-section input[type="text"], .user-form-section input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .user-form-section label {
+            margin-right: 10px;
+        }
+        .user-form-section input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .user-form-section button {
+            background: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+                .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+                .hidden {
+            display: none;
+        }
+  </style>
+</head>
+<body>
+<div class="nav-bar hidden">
+    <a href="#onglet1" class="nav-link" data-tab="onglet1">Appel des usagers</a>
+    <a href="#onglet2" class="nav-link" data-tab="onglet2">Statistiques</a>
+    <a href="#onglet3" class="nav-link" data-tab="onglet3">Gestion</a>
+</div>
+
+<div id="onglet1" class="tab-content">
+  <div class="grid-container">
+    <div class="grid-item case1">ÉDIFICE MURRAY</div>
+
+<div class="grid-item case3">
+  <span id="userEmail">AdresseEmail</span> &nbsp
+  <button class="button buttonLogOut" type="button" onclick="logout()">Déconnexion</button>
+</div>
+	  
+    <div></div>
+    <div></div>
+    
+         <form>
+    <div class="case7">
+        <select id="roomNumber1">
+            <option value="">-</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+        </select>
+    </div>
+    </form>
+    <form>
+   
+    <div class="case7">
+        <select id="counterNumber1">
+            <option value="">-</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+    </div>
+</form>
+      
+    <div></div>
+    <div></div>
+
+    <div class="grid-item case11">SALLE</div>
+    <div class="grid-item case11">TABLE</div>
+    <div class="button-container case13">
+        <button class="button button1" type="button">Numéro suivant</button>
+    </div>
+    <div></div>
+    <div></div>
+	<div class="grid-item case17"></div>
+	<div></div>
+    <div></div>
+    <div></div>
+    
+
+<div class="grid-item case21">NUMÉRO APPELÉ</div>
+    <div class="grid-item case23">STATISTIQUES PERSONNELLES</div>
+    
+    <div class="grid-item case25"><span id="counterNumberEmployee">-</span></div>
+    
+    <div class="grid-item case27">Durée moyenne (mins)</div>
+    <div class="grid-item case28">Total quotidien</div>
+    
+<div class="gauge-container">
+
+    <div class="gauge-background"></div>
+    <div class="gauge-background1"></div>
+    <div class="gauge-background2"></div>
+    <div class="gauge-background3"></div>
+    <div class="gauge-number number-5"><span id="min1">-</span></div>
+    <div class="gauge-number number-7"><span id="lowYellow">-</span></div>
+    <div class="gauge-number number-75"><span id="highYellow">-</span></div>
+    <div class="gauge-number number-10"><span id="max1">-</span></div>
+    <div class="gauge-needle" id="needle"></div>
+    <div class="gauge-center"></div>
+</div>
+    
+<div class="grid-item case32">
+    <div class="line1">
+        <span id="counterTotalQuotidien">-</span>
+    </div>
+</div>
+
+	<div class="grid-item case33"></div>
+    <div></div>
+    <div></div>
+
+
+    
+    <div class="grid-item case33">CIUSSSE-CHUS  |&nbsp      
+    <img src="https://upload.wikimedia.org/wikipedia/fr/7/7e/Qu%C3%A9bec.svg" alt="Gouvernement du Québec" style="width: 15%;"></div>
+    </div>
+  </div>
+   
+   <div id="onglet2" class="tab-content" style="display:none;">
+	
+    <div class="grid-item case28">&nbsp</div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Préleveur</th>
+                <th>Total d'usagers traités</th>
+                <th>Moyenne temps de traitement (min)</th>
+            </tr>
+        </thead>
+        <tbody id="userTableBody">
+            <!-- Les données des utilisateurs seront insérées ici -->
+        </tbody>
+    </table>
+    <div>
+        <p class="summary">Somme des Totaux: <span id="totalSum">0</span></p>
+        <p class="summary">Moyenne Globale: <span id="globalAverage">0</span></p>
+    </div>
+
+</div>
+   <div id="onglet3" class="tab-content" style="display:none;">
+
+<div class="user-container">
+		<div class="case23">&nbsp</div>
+        <div class="case23">GESTION DES PRÉLEVEURS</div>
+        <div class="user-list-section">
+            <div class="grid-item case28">Préleveurs actifs</div>
+            <ul id="userList2">
+                <!-- Les utilisateurs seront affichés ici -->
+            </ul>
+        </div>
+
+        <div class="user-form-section">
+            <div class="grid-item case28">CRÉATION</div>
+            <input type="text" id="userEmail2" placeholder="Nom d'utilisateur (ex : PrénomNom) - Doit être unique" required>
+            <input type="password" id="userPassword" placeholder="Mot de passe" required>
+          <input type="password" id="userPassword2" placeholder="Confirmer le mot de passe" required>
+          
+          <input type="password" id="adminPassword" placeholder="Mot de passe de l'administrateur connecté" required>
+          
+            <div>
+                <label>
+                    <input type="checkbox" id="userIsAdmin"> Admin
+                </label>
+            </div>
+            <div id="errorMessage" class="error"></div>
+            <button onclick="createUser2()">Créer un utilisateur</button>
+        </div>
+            <div class="user-list-section">
+            <div class="grid-item case28">Préleveurs inactifs</div>
+            <ul id="userList3">
+                <!-- Les utilisateurs seront affichés ici -->
+            </ul>
+        </div>
+        <div class="user-form-section">
+            <div class="grid-item case28">Paramètres avancés</div>
+             <p class="summary">Délais d'inactivité avant d'être considéré en pause (minutes):</p>
+            <label>
+                    <input type="checkbox" id="pause15mins" name="pauseGroup"> 15
+                    <input type="checkbox" id="pause20mins" name="pauseGroup"> 20
+                    <input type="checkbox" id="pause25mins" name="pauseGroup"> 25
+                    <input type="checkbox" id="pause30mins" name="pauseGroup"> 30
+                </label>
+             <p class="summary">Objectif des préleveurs - section en jaune de la jauge (mins) :</p>
+             <input type="number" id="borneInferieure" placeholder="Borne inférieure" required>
+            <input type="number" id="borneSuperieure" placeholder="Borne supérieure" required>
+            <div class="grid-item error"><span id="changesettingsmessage"></span></div>
+            <button onclick="confirmchangeSettings()">Appliquer les changements</button>
+            
+            </div>
+            
+    </div>
+   
+   </div>
+   
+    <script type="module" src="config.js" defer></script>
+    <script type="module" src="employee.js" defer></script>
+    <script type="module" src="auth.js" defer></script>
+<script>
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(event) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+      document.querySelector(this.getAttribute('href')).style.display = 'block';
+      event.preventDefault();
+      const tabId = this.getAttribute('data-tab');
+      handleTabClick(tabId);
+    });
+  });
+
+  function confirmchangeSettings() {
+    if (confirm("Attention, si un changement est effectué parmi ces paramètres toutes les pages de cette plateforme (compteur salle d'attente, interface des préleveurs et interface vigie) doivent être actualisées afin que les changements prennent effet. Voulez-vous continuer ?")) {
+      changeSettings();
+    }
+  }
+
+        // Fonction pour mettre à jour le tableau et les totaux
+        function updateTable(users) {
+            const userTableBody = document.getElementById('userTableBody');
+            userTableBody.innerHTML = ''; // Vider le tableau avant de le remplir
+
+            let totalSum = 0;
+            let globalAverage = 0;
+
+            users.forEach(user => {
+                const row = document.createElement('tr');
+
+                const emailCell = document.createElement('td');
+                emailCell.textContent = user.email;
+                row.appendChild(emailCell);
+
+                const totalCell = document.createElement('td');
+                totalCell.textContent = user.total;
+                row.appendChild(totalCell);
+
+                const moyenneCell = document.createElement('td');
+                moyenneCell.textContent = user.moyenne;
+                row.appendChild(moyenneCell);
+
+                userTableBody.appendChild(row);
+
+                totalSum += user.total;
+                globalAverage += user.moyenne;
+            });
+
+            const totalSumElement = document.getElementById('totalSum');
+            const globalAverageElement = document.getElementById('globalAverage');
+
+            totalSumElement.textContent = totalSum;
+            globalAverageElement.textContent = (globalAverage / users.length).toFixed(2);
+        }
+
+
+
+	function handleTabClick(tabId) {
+    console.log(`L'onglet ${tabId} a été cliqué.`);
+
+    // Exemple d'action que tu peux faire en fonction de l'onglet sélectionné
+    if (tabId === 'onglet1') {
+      // Exécuter un script pour l'onglet 1
+      console.log("Chargement des données pour l'onglet 1.");
+    } else if (tabId === 'onglet2') {
+      fetchAndDisplayUserData();
+      console.log("Chargement des statistiques.");
+    } else if (tabId === 'onglet3') {
+      getTechnicians();
+      getTechniciansFalse();
+      afficherSettingsActifs();
+      console.log("Chargement de la page de gestion.");
+    }
+  }
+document.addEventListener("DOMContentLoaded", function () {
+    const userEmail2 = document.getElementById('userEmail2');
+
+    // Fonction pour filtrer les caractères spéciaux et les espaces
+    userEmail2.addEventListener('input', function () {
+        this.value = this.value.replace(/[^a-zA-Z0-9]/g, '');
+    });
+    
+    // Fonction pour gérer les cases d'un groupe et assurer qu'au moins une case est cochée
+    function manageCheckboxGroup(groupName) {
+        const group = document.querySelectorAll(`input[name="${groupName}"]`);
+
+        group.forEach((checkbox) => {
+            checkbox.addEventListener('change', function() {
+                // Si la case est cochée
+                if (this.checked) {
+                    // Décocher les autres cases du groupe
+                    group.forEach((cb) => {
+                        if (cb !== this) {
+                            cb.checked = false;
+                        }
+                    });
+                }
+
+                // Vérifier si au moins une case est cochée
+                const anyChecked = Array.from(group).some(cb => cb.checked);
+                if (!anyChecked) {
+                    // Recocher la case qui vient d'être décochée
+                    this.checked = true;
+                }
+            });
+        });
+    }
+
+    // Appliquer la gestion des cases pour chaque groupe
+    manageCheckboxGroup('pauseGroup');
+    
+    const borneInferieure = document.getElementById('borneInferieure');
+    const borneSuperieure = document.getElementById('borneSuperieure');
+
+    function validateBounds() {
+        const minValue = parseFloat(borneInferieure.value);
+        const maxValue = parseFloat(borneSuperieure.value);
+
+        if (!isNaN(minValue) && !isNaN(maxValue) && minValue > maxValue) {
+            alert("La borne inférieure ne peut pas dépasser la borne supérieure !");
+            borneInferieure.value = maxValue; // Réinitialiser la borne inférieure
+        }
+    }
+
+    borneInferieure.addEventListener('input', validateBounds);
+    borneSuperieure.addEventListener('input', validateBounds);
+});
+
+        
+</script>
+<script type="module">
+	import { doc, setDoc, getDoc, updateDoc, collection, addDoc, query, getDocs, where } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+	import { db, auth } from './config.js'; // Assurez-vous que ce chemin est correct
+
+	        // Variable pour stocker le temps
+        let tempsPause = 25; // Valeur par défaut
+
+        // Fonction pour récupérer les paramètres de Firestore
+        async function fetchSettings() {
+            try {
+                const settingsDoc = doc(db, 'settings', 'userSettings');
+                const settingsSnapshot = await getDoc(settingsDoc);
+
+                if (settingsSnapshot.exists()) {
+                    const settingsData = settingsSnapshot.data();
+                    tempsPause = settingsData.tempsPause || 25; // Utiliser la valeur de Firestore ou la valeur par défaut
+		const hautYellow = parseFloat((settingsData.hautYellow || 7.5).toFixed(1));
+		const basYellow = parseFloat((settingsData.basYellow || 7).toFixed(1));
+		    document.getElementById('lowYellow').textContent = basYellow; 
+		    document.getElementById('highYellow').textContent = hautYellow;
+		    document.getElementById('min1').textContent = parseFloat((hautYellow - 5*(hautYellow-basYellow)|| 5).toFixed(1));
+		    document.getElementById('max1').textContent = parseFloat((hautYellow + 5*(hautYellow-basYellow)|| 10).toFixed(1));
+                } else {
+                    console.error('Aucun document trouvé dans Firestore');
+                }
+            } catch (error) {
+                console.error('Erreur lors de la récupération des paramètres:', error);
+            }
+        }
+
+        // Appeler fetchSettings lors du chargement de la page
+        window.onload = async () => {
+            await fetchSettings();
+	    document.querySelector('.button1').onclick = () => callNextUser(tempsPause);
+        };
+	
+</script>
+</body>
+</html>

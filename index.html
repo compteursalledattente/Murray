@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 0px;
+    }
+    .grid-item {
+      padding: 10px;
+      color: black; /* Pour améliorer la lisibilité */
+    }
+    .col-1 {
+      background-color: #def1d3; /* vert pâle */
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 60px;
+      border-top: 10px solid black;
+      border-left: 10px solid black;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .col-2 {
+      background-color: #f7e4d8; /* orange pâle */
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center; 
+      font-size: 60px;
+      border-top: 10px solid black;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .col-3 {
+      background-color: #d1edf9; /* bleu pâle */
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      font-size: 60px;
+      border-top: 10px solid black;
+      border-right: 10px solid black;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .col-4 {
+      background-color: #ffffff; /* blanc */
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      font-size: 50px;
+      border-top: 10px solid black;
+      border-right: 10px solid black;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .col-1-2 {
+      background-color: #def1d3; /* vert pâle */
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      font-size: 350px;
+      border-bottom: 10px solid black;
+      border-left: 10px solid black;
+    }
+    .col-2-2 {
+      background-color: #f7e4d8; /* orange pâle */
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      font-size: 350px;
+      border-bottom: 10px solid black;
+    }
+    .col-3-2 {
+      background-color: #d1edf9; /* bleu pâle */
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      font-size: 350px;
+      border-bottom: 10px solid black;
+      border-right: 10px solid black;
+    }
+    .col-4-2 {
+      background-color: #ffffff; /* blanc */
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      font-size: 80px;
+      border-right: 10px solid black;
+      border-bottom: 10px solid black;
+    }
+    .col-1-3 {
+      background-color: #ffffff;
+      grid-column: span 2; /* Fusionne deux colonnes */
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 70px;
+      text-align: left;
+    }
+    .col-2-3 {
+      background-color: #ffffff;
+      grid-column: span 2; /* Fusionne deux colonnes */
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 110px;
+      text-align: right;
+    }
+    .col-1-4 {
+      background-color: #ffffff;
+      font-family: Copperplate, Papyrus, Fantasy;
+      font-size: 40px;
+      text-align: right;
+      grid-column: span 4; /* Fusionne deux colonnes */
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .texte-rouge {
+      color: red;
+    }
+     #videoContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black; /* Pour un meilleur contraste */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Assurez-vous que la vidéo est au-dessus de tout */
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-item col-1">NUMÉRO APPELÉ</div>
+    <div class="grid-item col-2">SALLE</div>
+    <div class="grid-item col-3">TABLE</div>
+    <div class="grid-item col-4">NUMÉROS PRÉCÉDENTS</div>
+    
+    <div class="grid-item col-1-2"><span id="currentNumber">-</span></div>
+    <div class="grid-item col-2-2"><span id="roomNumber">-</span></div>
+    <div class="grid-item col-3-2"><span id="counterNumber">-</span></div>
+    <div class="grid-item col-4-2"><span id="old1">-</span><br><span id="old2">-</span><br><span id="old3">-</span><br><span id="old4">-</span><br><span id="old5">-</span></div>
+    
+    <div class="grid-item col-1-3">LE TEMPS DE TRAITEMENT<br>MOYEN EST DE <span id="tempsMoyen" class="texte-rouge">-</span> MINS</div>
+    <div class="grid-item col-2-3">ÉDIFICE MURRAY</div>
+    <div class="grid-item col-1-4">CIUSSSE-CHUS  |&nbsp      
+    <img src="https://upload.wikimedia.org/wikipedia/fr/7/7e/Qu%C3%A9bec.svg" alt="Gouvernement du Québec" style="width: 15%;"></div>
+  </div>
+  <audio id="notification123" src="notification123.mp3"></audio>
+  
+  <div id="videoContainer" style="display: none;">
+    <video id="videoElement" width="100%" height="100%" controls preload="auto">
+      <source src="your-video-file.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo HTML5.
+    </video>
+  </div>
+  
+<script type="module" src="config.js" defer></script>
+<script type="module" src="waitingRoom.js" defer></script>
+<script type="module" src="employee.js" defer></script>
+<script type="module">
+  function formatNumber(number) {
+    return number.toString().padStart(2, '0');
+  }
+</script>
+</body>
+</html>
