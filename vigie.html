@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appel des Usagers</title>
+  <style>
+    body {
+      margin: 60px;
+      font-family: Arial, sans-serif;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 0px;
+    }
+    .grid-item {
+      padding: 10px;
+      color: black; /* Pour améliorer la lisibilité */
+    }
+      body.hidden {
+        visibility: hidden;
+    }
+    .case1 {
+      background-color: #ffffff;
+      grid-column: span 2; /* Fusionne deux colonnes */
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 130px;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+      grid-row: span 3;
+    }
+    
+    .case3 {
+      display: flex;
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 20px;
+      align-items: center;
+      justify-content: right;
+      grid-column: span 2;
+    }
+    .case11 {
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      font-size: 60px;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    select {
+      width: 200px;
+      height: 200px;
+      padding: 5px;
+      font-size: 150px;
+      border-radius: 10px; /* coins arrondis */
+      border: 6px solid black; /* bordure bleue */
+      font-family: Impact, Helvetica, sans-serif;
+      background-color: #f8f9fa; /* couleur de fond */
+      color: #333; /* couleur du texte */
+      text-align: center;
+    }
+
+    /* Icône personnalisée pour la flèche déroulante */
+    select::after {
+      content: '\25BC'; /* caractère Unicode pour la flèche vers le bas */
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none; /* ne pas permettre de cliquer sur la flèche */
+    }
+
+    /* Conteneur pour le positionnement de l'icône */
+    .case7 {
+      position: relative;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+      }
+      
+    .case13 {
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      grid-column: span 2;
+      font-size: 30px;
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .button {
+      padding: 20px 40px;
+      font-family: Impact, Helvetica, sans-serif;
+      color: Black;
+      border: none; /* pas de bordure */
+      border-radius: 5px; /* coins arrondis */
+      cursor: pointer; /* curseur pointeur */
+      transition: background-color 0.3s;  
+    }
+    .button2 {
+      width: 600px; /* Largeur du bouton */
+      height: 80px; /* Hauteur du bouton */
+      font-size: 30px;
+    }
+    .button5 {
+      width: 600px; /* Largeur du bouton */
+      height: 80px; /* Hauteur du bouton */
+      font-size: 30px;
+    }
+    .buttonLogOut {
+      width: 160px; /* Largeur du bouton */
+      height: 40px; /* Hauteur du bouton */
+      font-size: 20px;
+      display: flex;
+  	  justify-content: center; /* Centre horizontalement */
+  	  align-items: center; /* Centre verticalement */
+    }
+
+    /* Effet au survol */
+    .button:hover {
+      background-color: #0056b3; /* couleur de fond au survol */
+    }
+    .case17 {
+      font-size: 60px;
+      display: flex;
+    }
+    .case21 {
+      border-left: 10px solid black;
+      border-top: 10px solid black;
+      border-right: 10px solid black;
+      display: flex;
+      grid-column: span 2;
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 50px;
+      align-items: center;
+      justify-content: center;
+    }
+    .case23 {
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center; 
+      font-size: 50px;
+      display: flex;
+      grid-column: span 2;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .case25 {
+      border-left: 10px solid black;
+      border-bottom: 10px solid black;
+      border-right: 10px solid black;
+      background-color: #f7e4d8; /* orange pâle */
+      font-family: Impact, Helvetica, sans-serif;
+      text-align: center;
+      font-size: 250px;
+      border-bottom: 10px solid black;
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+.case27 {
+  display: flex;
+  font-family: Impact, Helvetica, sans-serif;
+  font-size: 30px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline;
+  text-align: center; /* Centrer le texte horizontalement */
+}
+    .case28 {
+      display: flex;
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 30px;
+      align-items: center;
+      justify-content: center;
+      text-decoration: underline;
+    }
+    .case29 {
+      
+      background-color: #ffffff;
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 40px;
+      text-align: left;
+    }
+    .case31 {
+		display: flex;
+    	justify-content: center;
+    	align-items: center; /* Centre verticalement */
+    	height: 100%;
+    }
+        .case32 {
+		display: flex;
+    	justify-content: center;
+    	align-items: center; /* Centre verticalement */
+    	height: 100%;
+          font-family: Impact, Helvetica, sans-serif;
+      font-size: 80px;
+      flex-direction: column;
+
+    }
+    .case33 {
+      background-color: #ffffff;
+      font-family: Copperplate, Papyrus, Fantasy;
+      font-size: 40px;
+      text-align: right;
+      grid-column: span 4; /* Fusionne deux colonnes */
+      display: flex;
+      justify-content: center; /* Centre horizontalement */
+      align-items: center; /* Centre verticalement */
+    }
+    .case36 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Impact, Helvetica, sans-serif;
+      font-size: 30px;
+      background-color: transparent; /* Réinitialiser l'arrière-plan du conteneur */
+    }
+
+    .highlight {
+      background-color: lightgray; /* Couleur du surligneur */
+      padding: 0 4px; /* Ajuster l'espacement autour du texte */
+    }
+    .button-container {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    padding: 10px
+  	}
+    .button-disabled {
+    background-color: red;
+    opacity: 0.6;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-item case1">ÉDIFICE MURRAY</div>
+
+<div class="grid-item case3">
+  <button class="button buttonLogOut" type="button" onclick="logout()">Déconnexion</button>
+</div>
+	  
+    <div></div>
+    <div></div>
+   
+    <div></div>
+    <div></div>
+
+    <div class="button-container case13">
+        <button onclick="PreviousNumber()" class="button button2" type="button">Numéro précédent</button>
+    </div>
+        <div class="button-container case13">
+        <button onclick="nextNumber()" class="button button2" type="button">Numéro suivant</button>
+    </div>
+            <div class="button-container case13">
+        <button onclick="Desactivation()" class="button button5" type="button">Désactiver</button>
+    </div>
+            <div class="button-container case13">
+        <button onclick="confirmReset()" class="button button2" type="button">Réinitialiser</button>
+    </div>
+    
+    <div></div>
+    <div></div>
+	<div class="grid-item case17"></div>
+	<div></div>
+    <div></div>
+    <div></div>
+    
+
+
+
+    
+    <div class="grid-item case33">CIUSSSE-CHUS  |&nbsp      
+    <img src="https://upload.wikimedia.org/wikipedia/fr/7/7e/Qu%C3%A9bec.svg" alt="Gouvernement du Québec" style="width: 15%;"></div>
+    </div>
+
+
+    <script type="module" src="config.js" defer></script>
+    <script type="module" src="employee.js" defer></script>
+    <script type="module" src="auth.js" defer></script>
+<script>
+function confirmReset() {
+    if (confirm("Êtes-vous sûr de vouloir réinitialiser le compteur ?")) {
+      resetCounter();
+    }
+  }
+</script>
+</body>
+</html>
