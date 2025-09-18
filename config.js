@@ -3,13 +3,13 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDIWNDrrDBZcaE0TS56Fnz0R5Ykdg1s1yI",
-  authDomain: "psl-01-sherbrooke.firebaseapp.com",
-  projectId: "psl-01-sherbrooke",
-  storageBucket: "psl-01-sherbrooke.firebasestorage.app",
-  messagingSenderId: "193501593427",
-  appId: "1:193501593427:web:b2e2ac15fae134538e6ba6",
-  measurementId: "G-TMF44EGYN8"
+  apiKey: "AIzaSyDJJtSRMuwX2bWg-o8Cmd_cyxh2vDsoBgA",
+  authDomain: "compteurmurray.firebaseapp.com",
+  projectId: "compteurmurray",
+  storageBucket: "compteurmurray.firebasestorage.app",
+  messagingSenderId: "671010378458",
+  appId: "1:671010378458:web:fe4f24192606563394cbe3",
+  measurementId: "G-F7JK2M9YNQ"
 };
 
 const app = initializeApp(firebaseConfig);
